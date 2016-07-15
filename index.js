@@ -81,7 +81,6 @@ let writer = co(function*() {
 });
 
 
-
 setInterval(function() {
 	var num = lastTimestamp.getHighBits();
 	var qs = opsToProcess.length;
@@ -98,7 +97,7 @@ let reader = co(function*() {
 	let srcDbOrig = yield srcClient.connect(options.from);
 
 	let srcDb = srcDbOrig.db('local');
-	let time = options.time;
+	let time = options.duration;
 	let ts = new Timestamp(0, Math.floor(new Date().getTime() / 1000) - time);
 	let opts = {oplogReplay: true, numerOfRetries: -1};
 
